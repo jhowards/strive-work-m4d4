@@ -1,6 +1,5 @@
 import {Card} from 'react-bootstrap'
 import React from 'react'
-import CommentsList from './CommentsList'
 
 // const CommentArea = (props) =>(
 //     props.book ? (
@@ -18,19 +17,37 @@ import CommentsList from './CommentsList'
 
 
 class CommentArea extends React.Component{
-state = {
-    comments : []
-}
+    state = {
+        
+    }
+    
+    componentDidMount = () => {
+    var myHeaders = new Headers();
+    myHeaders.append("Authorization", "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MDgyYmM1YTEwOWJiYzAwMTVlNDA1ZGQiLCJpYXQiOjE2Mjk0NTIyNzgsImV4cCI6MTYzMDY2MTg3OH0.Udj1GYOhQEcl86grsjygbRG8JgzuBVAp2oSj8s6SJTY");
+    
+    var requestOptions = {
+      method: 'GET',
+      headers: myHeaders,
+      redirect: 'follow'
+    };
+    
+    fetch("https://striveschool-api.herokuapp.com/api/comments/", requestOptions)
+      .then(response => response.text())
+      .then(result => console.log(result))
+      .catch(error => console.log('error', error));
+ }
 
     render() {
         return(
-            this.props.book && (
+            this.props.book ? (
                 <Card.Footer className="text-muted">
-                    <CommentsList />
+                    Book Comments
                 </Card.Footer>
+            ) : (
+                <Card.Footer className="text-muted"> </Card.Footer>
             )
-            
-        )
+            )
+        
       
     }
 }
