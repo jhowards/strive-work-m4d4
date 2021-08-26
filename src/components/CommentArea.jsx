@@ -39,16 +39,13 @@ class CommentArea extends React.Component{
 
     render() {
         return(
-            this.props.book ? (
+            this.props.book && (
                 <Card.Footer className="text-muted">
                     Book Comments
                 </Card.Footer>
-            ) : (
-                <Card.Footer className="text-muted"> </Card.Footer>
-            )
-            )
-        
-      
+            ) 
+
+        )
     }
 }
 
