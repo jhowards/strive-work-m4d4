@@ -18,7 +18,7 @@ import React from 'react'
 
 class CommentArea extends React.Component{
     state = {
-        
+        id : "60f0440050783f00150a401b",
     }
     
     componentDidMount = () => {
@@ -30,8 +30,8 @@ class CommentArea extends React.Component{
       headers: myHeaders,
       redirect: 'follow'
     };
-    
-    fetch("https://striveschool-api.herokuapp.com/api/comments/", requestOptions)
+    console.log("test" + this.state.id)
+    fetch("https://striveschool-api.herokuapp.com/api/comments/" + this.state.id, requestOptions)
       .then(response => response.text())
       .then(result => console.log(result))
       .catch(error => console.log('error', error));
