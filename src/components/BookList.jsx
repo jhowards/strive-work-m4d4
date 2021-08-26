@@ -1,5 +1,5 @@
 import {Row, Col, Form} from 'react-bootstrap'
-import data from './data/scifi.json'
+import data from './data/history.json'
 import SingleBook from './SingleBook'
 import React from 'react';
 
